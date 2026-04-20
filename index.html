@@ -24,7 +24,7 @@
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
-            <a href="#consultation" class="nav-cta">Consultation</a>
+            <button class="nav-cta" data-modal="consultation">Consultation</button>
             <button class="mobile-menu-btn" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -48,10 +48,10 @@
                     <li><span class="check-icon"></span>Schengen area mobility</li>
                     <li><span class="check-icon"></span>Entire family included</li>
                 </ul>
-                <a href="#consultation" class="cta-button cta-primary">
+                <button class="cta-button cta-primary" data-modal="consultation">
                     <span class="cta-main">Book a 15-min Consultation</span>
                     <span class="cta-sub">Get a personal relocation plan</span>
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -207,27 +207,7 @@
                 </div>
             </div>
             <div class="who-cta">
-                <div class="callback-form-wrapper">
-                    <h3>Request a Call Back</h3>
-                    <p>Leave your number and we'll call you within 24 hours</p>
-                    <iframe
-                        src="https://api.leadconnectorhq.com/widget/form/5rwDwv2m1QV6FmqiSrtW"
-                        style="width:100%;height:400px;border:none;border-radius:8px"
-                        id="inline-5rwDwv2m1QV6FmqiSrtW"
-                        data-layout="{'id':'INLINE'}"
-                        data-trigger-type="alwaysShow"
-                        data-trigger-value=""
-                        data-activation-type="alwaysActivated"
-                        data-activation-value=""
-                        data-deactivation-type="neverDeactivate"
-                        data-deactivation-value=""
-                        data-form-name="Form from France Corporation.bz - zvonok - EN"
-                        data-height="534"
-                        data-layout-iframe-id="inline-5rwDwv2m1QV6FmqiSrtW"
-                        data-form-id="5rwDwv2m1QV6FmqiSrtW"
-                        title="Request a Call Back"
-                    ></iframe>
-                </div>
+                <button class="cta-button cta-secondary" data-modal="callback">Request a Call Back</button>
             </div>
         </div>
     </section>
@@ -394,7 +374,7 @@
                         <li><span class="check-icon"></span>Full support until visa approval</li>
                         <li><span class="check-icon"></span>Partnership with European lawyers and accountants</li>
                     </ul>
-                    <a href="#consultation" class="cta-button cta-secondary">Submit Application</a>
+                    <button class="cta-button cta-secondary" data-modal="consultation">Submit Application</button>
                 </div>
                 <div class="about-stats">
                     <div class="stat-item">
@@ -515,38 +495,81 @@
         </div>
     </section>
 
-    <!-- Consultation Section -->
-    <section class="consultation" id="consultation">
+    <!-- CTA Section -->
+    <section class="cta-section" id="consultation">
         <div class="container">
-            <div class="consultation-wrapper">
-                <div class="consultation-content">
-                    <h2>Book Your Free Consultation</h2>
-                    <p class="consultation-subtitle">Find out which visa type is right for you</p>
-                    <p>Share your project with us and we'll assess your chances of relocating. Book a free 15-minute consultation and get a personal relocation plan.</p>
-                </div>
-                <div class="consultation-form">
-                    <iframe
-                        src="https://api.leadconnectorhq.com/widget/form/fWZSZCIAZF6aMk2ViD5C"
-                        style="width:100%;height:100%;border:none;border-radius:8px"
-                        id="inline-fWZSZCIAZF6aMk2ViD5C"
-                        data-layout="{'id':'INLINE'}"
-                        data-trigger-type="alwaysShow"
-                        data-trigger-value=""
-                        data-activation-type="alwaysActivated"
-                        data-activation-value=""
-                        data-deactivation-type="neverDeactivate"
-                        data-deactivation-value=""
-                        data-form-name="Form from France Corporation.bz - get consultation - EN"
-                        data-height="534"
-                        data-layout-iframe-id="inline-fWZSZCIAZF6aMk2ViD5C"
-                        data-form-id="fWZSZCIAZF6aMk2ViD5C"
-                        title="Form from France Corporation.bz - get consultation - EN"
-                    ></iframe>
-                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+            <div class="cta-content">
+                <h2>Ready to Start Your European Journey?</h2>
+                <p>Book a free 15-minute consultation and get a personal relocation plan tailored to your situation.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button cta-primary" data-modal="consultation">
+                        <span class="cta-main">Book a Consultation</span>
+                        <span class="cta-sub">Get expert advice</span>
+                    </button>
+                    <button class="cta-button cta-secondary-light" data-modal="callback">
+                        <span class="cta-main">Request a Call Back</span>
+                        <span class="cta-sub">We'll contact you</span>
+                    </button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal: Consultation Form -->
+    <div class="modal" id="modal-consultation">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3>Book Your Free Consultation</h3>
+            <p>Find out which visa type is right for you</p>
+            <iframe
+                src="https://api.leadconnectorhq.com/widget/form/fWZSZCIAZF6aMk2ViD5C"
+                style="width:100%;height:480px;border:none;border-radius:8px"
+                id="modal-form-consultation"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Form from France Corporation.bz - get consultation - EN"
+                data-height="534"
+                data-layout-iframe-id="modal-form-consultation"
+                data-form-id="fWZSZCIAZF6aMk2ViD5C"
+                title="Book Consultation"
+            ></iframe>
+        </div>
+    </div>
+
+    <!-- Modal: Callback Form -->
+    <div class="modal" id="modal-callback">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3>Request a Call Back</h3>
+            <p>Leave your number and we'll call you within 24 hours</p>
+            <iframe
+                src="https://api.leadconnectorhq.com/widget/form/5rwDwv2m1QV6FmqiSrtW"
+                style="width:100%;height:480px;border:none;border-radius:8px"
+                id="modal-form-callback"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Form from France Corporation.bz - zvonok - EN"
+                data-height="534"
+                data-layout-iframe-id="modal-form-callback"
+                data-form-id="5rwDwv2m1QV6FmqiSrtW"
+                title="Request Call Back"
+            ></iframe>
+        </div>
+    </div>
+
+    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
     <!-- Footer -->
     <footer class="footer">

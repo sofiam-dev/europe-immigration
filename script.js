@@ -28,9 +28,10 @@ faqItems.forEach(item => {
     });
 });
 
-// Smooth scroll for anchor links
+// Smooth scroll for anchor links (excluding modal triggers)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        if (this.hasAttribute('data-modal')) return;
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -52,6 +53,56 @@ if (mobileMenuBtn) {
         mobileMenuBtn.classList.toggle('active');
     });
 }
+
+// Modal functionality
+const modals = document.querySelectorAll('.modal');
+const modalTriggers = document.querySelectorAll('[data-modal]');
+
+// Open modal
+modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalId = trigger.getAttribute('data-modal');
+        const modal = document.getElementById(`modal-${modalId}`);
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Close modal
+modals.forEach(modal => {
+    // Close on overlay click
+    const overlay = modal.querySelector('.modal-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Close on X button click
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        modals.forEach(modal => {
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
 
 // Intersection Observer for animations
 const observerOptions = {
