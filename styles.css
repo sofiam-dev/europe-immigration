@@ -329,26 +329,28 @@ img {
 .card-cta {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px;
-    border-radius: 8px;
+    align-items: center;
+    padding: 14px 28px;
+    border-radius: 50px;
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-normal);
-    border: 1px solid var(--color-border);
-    background: var(--color-bg-light);
+    border: none;
+    background: #ffffff;
     color: var(--color-text-dark);
-    text-align: left;
-    gap: 2px;
+    text-align: center;
+    gap: 3px;
     font-family: inherit;
-    margin-top: 16px;
-    width: 100%;
+    margin-top: 20px;
+    width: auto;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card-cta:hover {
     background: var(--color-text-dark);
     color: #fff;
-    border-color: var(--color-text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-cta span:first-child {
@@ -408,6 +410,10 @@ section {
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .risk-card:hover {
@@ -448,6 +454,10 @@ section {
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .serve-card:hover {
@@ -497,6 +507,16 @@ section {
     border-radius: var(--border-radius-lg);
     border: 1px solid var(--color-border);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.country-flag {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    line-height: 1;
 }
 
 .country-card:hover {
