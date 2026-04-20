@@ -300,14 +300,16 @@ img {
 }
 
 .cta-secondary {
-    border-color: var(--color-text-dark);
-    color: var(--color-text-dark);
-    background: transparent;
+    border: none;
+    color: #ffffff;
+    background: var(--color-text-dark);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .cta-secondary:hover {
-    background: var(--color-text-dark);
+    background: #000000;
     color: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .cta-main {
@@ -336,21 +338,21 @@ img {
     cursor: pointer;
     transition: all var(--transition-normal);
     border: none;
-    background: #ffffff;
-    color: var(--color-text-dark);
+    background: var(--color-text-dark);
+    color: #ffffff;
     text-align: center;
     gap: 3px;
     font-family: inherit;
     margin-top: 20px;
     width: auto;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-cta:hover {
-    background: var(--color-text-dark);
+    background: #000000;
     color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card-cta span:first-child {
