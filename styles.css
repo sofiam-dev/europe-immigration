@@ -279,23 +279,24 @@ img {
     font-weight: 500;
     cursor: pointer;
     transition: all var(--transition-normal);
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    color: #fff;
+    border: none;
+    background: #ffffff;
+    color: var(--color-text-dark);
     text-align: center;
     gap: 4px;
     font-family: inherit;
 }
 
 .cta-button:hover {
-    background: #fff;
-    color: var(--color-text-dark);
-    border-color: #fff;
+    background: var(--color-text-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .cta-primary {
-    background: rgba(255, 255, 255, 0.15);
+    background: #ffffff;
+    color: var(--color-text-dark);
 }
 
 .cta-secondary {
@@ -1010,11 +1011,11 @@ section {
         display: flex;
     }
 
-    /* Hero mobile - organic spacing */
+    /* Hero mobile - larger fonts, use full space */
     .hero {
         min-height: 100svh;
         min-height: 100dvh;
-        padding: 56px 16px 24px;
+        padding: 60px 20px 28px;
         display: flex;
         align-items: center;
         text-align: left;
@@ -1032,50 +1033,50 @@ section {
     }
 
     .hero-badge {
-        font-size: 0.52rem;
-        padding: 5px 12px;
-        margin-bottom: 12px;
-        letter-spacing: 0.02em;
+        font-size: 0.6rem;
+        padding: 6px 14px;
+        margin-bottom: 16px;
+        letter-spacing: 0.03em;
     }
 
     .hero h1 {
-        font-size: 1.2rem;
-        margin-bottom: 14px;
+        font-size: 1.5rem;
+        margin-bottom: 18px;
         line-height: 1.3;
         text-align: left;
     }
 
     .hero-text {
-        font-size: 0.72rem;
-        margin-bottom: 12px;
-        line-height: 1.5;
+        font-size: 0.88rem;
+        margin-bottom: 16px;
+        line-height: 1.55;
         text-align: left;
     }
 
     .hero-subtext {
-        font-size: 0.8rem;
-        margin-bottom: 10px;
+        font-size: 1rem;
+        margin-bottom: 14px;
         font-weight: 600;
         text-align: left;
     }
 
     .hero-cta-text {
-        font-size: 0.68rem;
-        margin-bottom: 16px;
+        font-size: 0.85rem;
+        margin-bottom: 20px;
         text-align: left;
     }
 
     .cta-button {
-        padding: 14px 28px;
+        padding: 16px 32px;
         align-self: flex-start;
     }
 
     .cta-main {
-        font-size: 0.88rem;
+        font-size: 1rem;
     }
 
     .cta-sub {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     section {
@@ -1111,49 +1112,50 @@ section {
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 14px;
+        padding: 0 16px;
     }
 
     .hero {
-        padding: 52px 14px 20px;
+        padding: 56px 16px 24px;
     }
 
     .hero-badge {
-        margin-bottom: 10px;
+        font-size: 0.55rem;
+        margin-bottom: 14px;
     }
 
     .hero h1 {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
+        font-size: 1.35rem;
+        margin-bottom: 14px;
         line-height: 1.28;
     }
 
     .hero-text {
-        font-size: 0.68rem;
-        margin-bottom: 10px;
-        line-height: 1.45;
+        font-size: 0.82rem;
+        margin-bottom: 12px;
+        line-height: 1.5;
     }
 
     .hero-subtext {
-        font-size: 0.75rem;
-        margin-bottom: 8px;
+        font-size: 0.92rem;
+        margin-bottom: 10px;
     }
 
     .hero-cta-text {
-        font-size: 0.64rem;
-        margin-bottom: 14px;
+        font-size: 0.78rem;
+        margin-bottom: 16px;
     }
 
     .cta-button {
-        padding: 12px 24px;
+        padding: 14px 28px;
     }
 
     .cta-main {
-        font-size: 0.84rem;
+        font-size: 0.95rem;
     }
 
     .cta-sub {
-        font-size: 0.66rem;
+        font-size: 0.75rem;
     }
 
     .risk-card,
@@ -1179,34 +1181,81 @@ section {
 /* Extra small screens (iPhone SE, small Android) */
 @media (max-width: 380px) {
     .hero {
+        padding: 52px 14px 20px;
+    }
+
+    .hero-badge {
+        font-size: 0.5rem;
+        padding: 5px 10px;
+        margin-bottom: 12px;
+    }
+
+    .hero h1 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+        line-height: 1.26;
+    }
+
+    .hero-text {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+        line-height: 1.48;
+    }
+
+    .hero-subtext {
+        font-size: 0.85rem;
+        margin-bottom: 8px;
+    }
+
+    .hero-cta-text {
+        font-size: 0.7rem;
+        margin-bottom: 14px;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+    }
+
+    .cta-main {
+        font-size: 0.88rem;
+    }
+
+    .cta-sub {
+        font-size: 0.7rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 340px) {
+    .hero {
         padding: 50px 12px 18px;
     }
 
     .hero-badge {
-        font-size: 0.48rem;
-        padding: 4px 10px;
-        margin-bottom: 8px;
+        font-size: 0.46rem;
+        padding: 4px 8px;
+        margin-bottom: 10px;
     }
 
     .hero h1 {
-        font-size: 1rem;
+        font-size: 1.08rem;
         margin-bottom: 10px;
-        line-height: 1.25;
+        line-height: 1.24;
     }
 
     .hero-text {
-        font-size: 0.62rem;
+        font-size: 0.68rem;
         margin-bottom: 8px;
-        line-height: 1.42;
+        line-height: 1.45;
     }
 
     .hero-subtext {
-        font-size: 0.7rem;
+        font-size: 0.78rem;
         margin-bottom: 6px;
     }
 
     .hero-cta-text {
-        font-size: 0.58rem;
+        font-size: 0.62rem;
         margin-bottom: 12px;
     }
 
@@ -1215,57 +1264,10 @@ section {
     }
 
     .cta-main {
-        font-size: 0.78rem;
+        font-size: 0.82rem;
     }
 
     .cta-sub {
-        font-size: 0.6rem;
-    }
-}
-
-/* Very small screens */
-@media (max-width: 340px) {
-    .hero {
-        padding: 48px 10px 16px;
-    }
-
-    .hero-badge {
-        font-size: 0.44rem;
-        padding: 3px 8px;
-        margin-bottom: 6px;
-    }
-
-    .hero h1 {
-        font-size: 0.92rem;
-        margin-bottom: 8px;
-        line-height: 1.22;
-    }
-
-    .hero-text {
-        font-size: 0.56rem;
-        margin-bottom: 6px;
-        line-height: 1.4;
-    }
-
-    .hero-subtext {
-        font-size: 0.64rem;
-        margin-bottom: 5px;
-    }
-
-    .hero-cta-text {
-        font-size: 0.52rem;
-        margin-bottom: 10px;
-    }
-
-    .cta-button {
-        padding: 10px 20px;
-    }
-
-    .cta-main {
-        font-size: 0.72rem;
-    }
-
-    .cta-sub {
-        font-size: 0.55rem;
+        font-size: 0.65rem;
     }
 }
