@@ -1011,26 +1011,35 @@ section {
         display: flex;
     }
 
-    /* Hero mobile - larger fonts, use full space */
+    /* Hero mobile - fill screen completely, no empty space */
     .hero {
         min-height: 100svh;
         min-height: 100dvh;
-        padding: 60px 20px 28px;
+        height: 100svh;
+        height: 100dvh;
+        padding: 0 20px;
+        padding-top: 70px;
+        padding-bottom: 30px;
         display: flex;
-        align-items: center;
-        text-align: left;
+        align-items: stretch;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     .hero .container {
         width: 100%;
+        display: flex;
+        align-items: stretch;
     }
 
     .hero-content {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: space-evenly;
         text-align: center;
         width: 100%;
+        flex: 1;
     }
 
     .hero-badge {
@@ -1042,28 +1051,28 @@ section {
 
     .hero h1 {
         font-size: 1.5rem;
-        margin-bottom: 18px;
+        margin-bottom: 20px;
         line-height: 1.3;
         text-align: center;
     }
 
     .hero-text {
         font-size: 0.88rem;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
         line-height: 1.55;
         text-align: center;
     }
 
     .hero-subtext {
         font-size: 1rem;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
         font-weight: 600;
         text-align: center;
     }
 
     .hero-cta-text {
         font-size: 0.85rem;
-        margin-bottom: 20px;
+        margin-bottom: 22px;
         text-align: center;
     }
 
@@ -1117,7 +1126,9 @@ section {
     }
 
     .hero {
-        padding: 56px 16px 24px;
+        padding: 0 16px;
+        padding-top: 65px;
+        padding-bottom: 25px;
     }
 
     .hero-badge {
@@ -1127,24 +1138,24 @@ section {
 
     .hero h1 {
         font-size: 1.35rem;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
         line-height: 1.28;
     }
 
     .hero-text {
         font-size: 0.82rem;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         line-height: 1.5;
     }
 
     .hero-subtext {
         font-size: 0.92rem;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
     .hero-cta-text {
         font-size: 0.78rem;
-        margin-bottom: 16px;
+        margin-bottom: 18px;
     }
 
     .cta-button {
@@ -1182,7 +1193,9 @@ section {
 /* Extra small screens (iPhone SE, small Android) */
 @media (max-width: 380px) {
     .hero {
-        padding: 52px 14px 20px;
+        padding: 0 14px;
+        padding-top: 60px;
+        padding-bottom: 20px;
     }
 
     .hero-badge {
@@ -1193,24 +1206,24 @@ section {
 
     .hero h1 {
         font-size: 1.2rem;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         line-height: 1.26;
     }
 
     .hero-text {
         font-size: 0.75rem;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         line-height: 1.48;
     }
 
     .hero-subtext {
         font-size: 0.85rem;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
     }
 
     .hero-cta-text {
         font-size: 0.7rem;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
     }
 
     .cta-button {
@@ -1229,7 +1242,9 @@ section {
 /* Very small screens */
 @media (max-width: 340px) {
     .hero {
-        padding: 50px 12px 18px;
+        padding: 0 12px;
+        padding-top: 55px;
+        padding-bottom: 18px;
     }
 
     .hero-badge {
@@ -1240,24 +1255,24 @@ section {
 
     .hero h1 {
         font-size: 1.08rem;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         line-height: 1.24;
     }
 
     .hero-text {
         font-size: 0.68rem;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         line-height: 1.45;
     }
 
     .hero-subtext {
         font-size: 0.78rem;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
 
     .hero-cta-text {
         font-size: 0.62rem;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 
     .cta-button {
