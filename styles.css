@@ -1010,72 +1010,79 @@ section {
         display: flex;
     }
 
-    /* Hero mobile optimization - MUST fit on screen without scroll */
+    /* Hero mobile optimization - fill screen, no empty space */
     .hero {
-        min-height: auto;
-        height: 100svh;
-        height: 100dvh;
-        padding: 54px 12px 16px;
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding: 60px 16px 20px;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         text-align: left;
+    }
+
+    .hero .container {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
     }
 
     .hero-content {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         gap: 0;
         max-width: 100%;
         align-items: flex-start;
+        width: 100%;
+        padding: 10px 0;
     }
 
     .hero-badge {
-        font-size: 0.5rem;
-        padding: 4px 10px;
-        margin-bottom: 10px;
+        font-size: 0.55rem;
+        padding: 5px 12px;
+        margin-bottom: 0;
         letter-spacing: 0.02em;
     }
 
     .hero h1 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        line-height: 1.28;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        line-height: 1.3;
         text-align: left;
     }
 
     .hero-text {
-        font-size: 0.68rem;
-        margin-bottom: 8px;
-        line-height: 1.45;
+        font-size: 0.75rem;
+        margin-bottom: 0;
+        line-height: 1.5;
         text-align: left;
         max-width: 100%;
     }
 
     .hero-subtext {
-        font-size: 0.75rem;
-        margin-bottom: 8px;
+        font-size: 0.85rem;
+        margin-bottom: 0;
         font-weight: 600;
         text-align: left;
     }
 
     .hero-cta-text {
-        font-size: 0.65rem;
-        margin-bottom: 12px;
+        font-size: 0.72rem;
+        margin-bottom: 0;
         text-align: left;
     }
 
     .cta-button {
-        padding: 12px 24px;
+        padding: 14px 28px;
         align-self: flex-start;
     }
 
     .cta-main {
-        font-size: 0.82rem;
+        font-size: 0.9rem;
     }
 
     .cta-sub {
-        font-size: 0.65rem;
+        font-size: 0.72rem;
     }
 
     section {
@@ -1111,54 +1118,42 @@ section {
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 10px;
+        padding: 0 14px;
     }
 
-    /* Compact hero for phones */
+    /* Compact hero for phones - fill screen */
     .hero {
-        padding: 50px 10px 14px;
-    }
-
-    .hero-badge {
-        font-size: 0.48rem;
-        padding: 4px 8px;
-        margin-bottom: 8px;
+        padding: 56px 14px 16px;
     }
 
     .hero h1 {
-        font-size: 1rem;
-        margin-bottom: 8px;
-        line-height: 1.25;
+        font-size: 1.15rem;
+        line-height: 1.28;
     }
 
     .hero-text {
-        font-size: 0.62rem;
-        margin-bottom: 6px;
-        line-height: 1.4;
+        font-size: 0.7rem;
+        line-height: 1.45;
     }
 
     .hero-subtext {
-        font-size: 0.68rem;
-        margin-bottom: 6px;
-    }
-
-    .hero-cta-text {
-        font-size: 0.58rem;
-        margin-bottom: 10px;
-    }
-
-    .cta-button {
-        padding: 10px 20px;
-        width: auto;
-        align-self: flex-start;
-    }
-
-    .cta-main {
         font-size: 0.78rem;
     }
 
+    .hero-cta-text {
+        font-size: 0.65rem;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+    }
+
+    .cta-main {
+        font-size: 0.85rem;
+    }
+
     .cta-sub {
-        font-size: 0.6rem;
+        font-size: 0.68rem;
     }
 
     .risk-card,
@@ -1184,83 +1179,83 @@ section {
 /* Extra small screens (iPhone SE, small Android) */
 @media (max-width: 380px) {
     .hero {
-        padding: 48px 10px 12px;
+        padding: 52px 12px 14px;
     }
 
     .hero-badge {
-        font-size: 0.45rem;
-        padding: 3px 7px;
-        margin-bottom: 6px;
+        font-size: 0.5rem;
+        padding: 4px 10px;
     }
 
     .hero h1 {
-        font-size: 0.92rem;
-        margin-bottom: 6px;
-        line-height: 1.22;
+        font-size: 1.05rem;
+        line-height: 1.25;
     }
 
     .hero-text {
-        font-size: 0.56rem;
-        margin-bottom: 5px;
-        line-height: 1.38;
+        font-size: 0.65rem;
+        line-height: 1.42;
     }
 
     .hero-subtext {
-        font-size: 0.62rem;
-        margin-bottom: 5px;
-    }
-
-    .hero-cta-text {
-        font-size: 0.52rem;
-        margin-bottom: 8px;
-    }
-
-    .cta-button {
-        padding: 9px 18px;
-    }
-
-    .cta-main {
         font-size: 0.72rem;
     }
 
+    .hero-cta-text {
+        font-size: 0.6rem;
+    }
+
+    .cta-button {
+        padding: 11px 22px;
+    }
+
+    .cta-main {
+        font-size: 0.8rem;
+    }
+
     .cta-sub {
-        font-size: 0.55rem;
+        font-size: 0.62rem;
     }
 }
 
 /* Very small screens */
 @media (max-width: 340px) {
     .hero {
-        padding: 46px 8px 10px;
+        padding: 50px 10px 12px;
     }
 
     .hero-badge {
-        font-size: 0.42rem;
+        font-size: 0.45rem;
+        padding: 3px 8px;
     }
 
     .hero h1 {
-        font-size: 0.85rem;
-        line-height: 1.2;
+        font-size: 0.95rem;
+        line-height: 1.22;
     }
 
     .hero-text {
-        font-size: 0.52rem;
-        line-height: 1.35;
+        font-size: 0.58rem;
+        line-height: 1.4;
     }
 
     .hero-subtext {
-        font-size: 0.58rem;
+        font-size: 0.65rem;
     }
 
     .hero-cta-text {
-        font-size: 0.48rem;
+        font-size: 0.55rem;
+    }
+
+    .cta-button {
+        padding: 10px 20px;
     }
 
     .cta-main {
-        font-size: 0.68rem;
+        font-size: 0.75rem;
     }
 
     .cta-sub {
-        font-size: 0.5rem;
+        font-size: 0.58rem;
     }
 }
