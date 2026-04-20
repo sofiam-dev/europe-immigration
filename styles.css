@@ -1010,65 +1010,58 @@ section {
         display: flex;
     }
 
-    /* Hero mobile optimization - fill screen, no empty space */
+    /* Hero mobile - organic spacing */
     .hero {
         min-height: 100svh;
         min-height: 100dvh;
-        padding: 60px 16px 20px;
+        padding: 56px 16px 24px;
         display: flex;
-        align-items: stretch;
+        align-items: center;
         text-align: left;
     }
 
     .hero .container {
-        display: flex;
-        align-items: stretch;
         width: 100%;
     }
 
     .hero-content {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        gap: 0;
-        max-width: 100%;
         align-items: flex-start;
         width: 100%;
-        padding: 10px 0;
     }
 
     .hero-badge {
-        font-size: 0.55rem;
+        font-size: 0.52rem;
         padding: 5px 12px;
-        margin-bottom: 0;
+        margin-bottom: 12px;
         letter-spacing: 0.02em;
     }
 
     .hero h1 {
-        font-size: 1.25rem;
-        margin-bottom: 0;
+        font-size: 1.2rem;
+        margin-bottom: 14px;
         line-height: 1.3;
         text-align: left;
     }
 
     .hero-text {
-        font-size: 0.75rem;
-        margin-bottom: 0;
+        font-size: 0.72rem;
+        margin-bottom: 12px;
         line-height: 1.5;
         text-align: left;
-        max-width: 100%;
     }
 
     .hero-subtext {
-        font-size: 0.85rem;
-        margin-bottom: 0;
+        font-size: 0.8rem;
+        margin-bottom: 10px;
         font-weight: 600;
         text-align: left;
     }
 
     .hero-cta-text {
-        font-size: 0.72rem;
-        margin-bottom: 0;
+        font-size: 0.68rem;
+        margin-bottom: 16px;
         text-align: left;
     }
 
@@ -1078,11 +1071,11 @@ section {
     }
 
     .cta-main {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
     }
 
     .cta-sub {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
     }
 
     section {
@@ -1121,27 +1114,34 @@ section {
         padding: 0 14px;
     }
 
-    /* Compact hero for phones - fill screen */
     .hero {
-        padding: 56px 14px 16px;
+        padding: 52px 14px 20px;
+    }
+
+    .hero-badge {
+        margin-bottom: 10px;
     }
 
     .hero h1 {
-        font-size: 1.15rem;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
         line-height: 1.28;
     }
 
     .hero-text {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
+        margin-bottom: 10px;
         line-height: 1.45;
     }
 
     .hero-subtext {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
     }
 
     .hero-cta-text {
-        font-size: 0.65rem;
+        font-size: 0.64rem;
+        margin-bottom: 14px;
     }
 
     .cta-button {
@@ -1149,11 +1149,11 @@ section {
     }
 
     .cta-main {
-        font-size: 0.85rem;
+        font-size: 0.84rem;
     }
 
     .cta-sub {
-        font-size: 0.68rem;
+        font-size: 0.66rem;
     }
 
     .risk-card,
@@ -1179,30 +1179,35 @@ section {
 /* Extra small screens (iPhone SE, small Android) */
 @media (max-width: 380px) {
     .hero {
-        padding: 52px 12px 14px;
+        padding: 50px 12px 18px;
     }
 
     .hero-badge {
-        font-size: 0.5rem;
+        font-size: 0.48rem;
         padding: 4px 10px;
+        margin-bottom: 8px;
     }
 
     .hero h1 {
-        font-size: 1.05rem;
+        font-size: 1rem;
+        margin-bottom: 10px;
         line-height: 1.25;
     }
 
     .hero-text {
-        font-size: 0.65rem;
+        font-size: 0.62rem;
+        margin-bottom: 8px;
         line-height: 1.42;
     }
 
     .hero-subtext {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
+        margin-bottom: 6px;
     }
 
     .hero-cta-text {
-        font-size: 0.6rem;
+        font-size: 0.58rem;
+        margin-bottom: 12px;
     }
 
     .cta-button {
@@ -1210,41 +1215,46 @@ section {
     }
 
     .cta-main {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
     }
 
     .cta-sub {
-        font-size: 0.62rem;
+        font-size: 0.6rem;
     }
 }
 
 /* Very small screens */
 @media (max-width: 340px) {
     .hero {
-        padding: 50px 10px 12px;
+        padding: 48px 10px 16px;
     }
 
     .hero-badge {
-        font-size: 0.45rem;
+        font-size: 0.44rem;
         padding: 3px 8px;
+        margin-bottom: 6px;
     }
 
     .hero h1 {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
+        margin-bottom: 8px;
         line-height: 1.22;
     }
 
     .hero-text {
-        font-size: 0.58rem;
+        font-size: 0.56rem;
+        margin-bottom: 6px;
         line-height: 1.4;
     }
 
     .hero-subtext {
-        font-size: 0.65rem;
+        font-size: 0.64rem;
+        margin-bottom: 5px;
     }
 
     .hero-cta-text {
-        font-size: 0.55rem;
+        font-size: 0.52rem;
+        margin-bottom: 10px;
     }
 
     .cta-button {
@@ -1252,10 +1262,10 @@ section {
     }
 
     .cta-main {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
     }
 
     .cta-sub {
-        font-size: 0.58rem;
+        font-size: 0.55rem;
     }
 }
