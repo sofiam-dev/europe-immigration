@@ -26,6 +26,111 @@
     src="https://www.facebook.com/tr?id=2138338776959404&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
+    <!-- Reference Code Generator -->
+    <script>
+    (function () {
+      const DIRECTION = 'EU';
+      const ACTIVE_KEY = 'ghl_active_reference_code_' + DIRECTION;
+      const SUBMITTED_KEY = 'ghl_submitted_reference_code_' + DIRECTION;
+      const PAGE_KEY = 'ghl_reference_page_' + DIRECTION;
+
+      function makeReferenceCode(prefix) {
+        const d = new Date();
+        const yy = String(d.getFullYear()).slice(-2);
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const hh = String(d.getHours()).padStart(2, '0');
+        const mi = String(d.getMinutes()).padStart(2, '0');
+        const ss = String(d.getSeconds()).padStart(2, '0');
+        const rnd = Math.floor(1000 + Math.random() * 9000);
+        return `${prefix}-${yy}${mm}${dd}-${hh}${mi}${ss}-${rnd}`;
+      }
+
+      function getStorage(key) {
+        try {
+          return sessionStorage.getItem(key) || '';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function setStorage(key, value) {
+        try {
+          sessionStorage.setItem(key, value);
+        } catch (e) {}
+      }
+
+      function getPageSignature() {
+        return location.origin + location.pathname + location.search;
+      }
+
+      function ensureFreshCodeForCurrentPage() {
+        const currentPage = getPageSignature();
+        const savedPage = getStorage(PAGE_KEY);
+        let code = getStorage(ACTIVE_KEY);
+
+        if (!code || savedPage !== currentPage) {
+          code = makeReferenceCode(DIRECTION);
+          setStorage(PAGE_KEY, currentPage);
+          setStorage(ACTIVE_KEY, code);
+          setStorage(SUBMITTED_KEY, '');
+          console.log('New reference code created:', code);
+        }
+
+        return code;
+      }
+
+      function getActiveCode() {
+        return ensureFreshCodeForCurrentPage();
+      }
+
+      window.addEventListener('message', function (event) {
+        const data = event.data || {};
+
+        // 1. Форма просит код — отдаем ей
+        if (
+          data.type === 'GHL_REFERENCE_CODE_REQUEST' &&
+          data.direction === DIRECTION
+        ) {
+          const code = getActiveCode();
+
+          try {
+            event.source.postMessage(
+              {
+                type: 'GHL_REFERENCE_CODE_RESPONSE',
+                direction: DIRECTION,
+                code: code
+              },
+              '*'
+            );
+          } catch (e) {}
+        }
+
+        // 2. Форма сообщает, что клиент нажал Submit
+        if (
+          data.type === 'GHL_REFERENCE_CODE_SUBMITTED' &&
+          data.direction === DIRECTION &&
+          data.code
+        ) {
+          setStorage(SUBMITTED_KEY, data.code);
+          setStorage(ACTIVE_KEY, data.code);
+
+          // ВАЖНАЯ АДАПТАЦИЯ: Упаковываем данные в window.name для страницы Спасибо
+          const payload = {
+            code: data.code,
+            direction: DIRECTION,
+            country: '' // Оставляем пустым, так как форма на общую Европу
+          };
+
+          window.name = 'REFCODE::' + encodeURIComponent(JSON.stringify(payload));
+
+          console.log('Submitted reference code packed for Thank You page:', data.code);
+        }
+      });
+
+      getActiveCode();
+    })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
