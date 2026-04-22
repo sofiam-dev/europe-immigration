@@ -175,7 +175,7 @@
         <div class="divider"></div>
 
         <p class="faster-response">Need a faster response?</p>
-        <a href="https://wa.me/447400223162" class="whatsapp-btn" target="_blank" rel="noopener">
+        <a href="https://wa.me/12896211855" class="whatsapp-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
             </svg>
@@ -184,5 +184,98 @@
 
         <a href="index.html" class="back-link">&larr; Back to homepage</a>
     </div>
+
+    <script>
+    (function () {
+      function normalizeValue(value) {
+        return String(value || '')
+          .toLowerCase()
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function readWindowNamePayload() {
+        try {
+          if (!window.name || !window.name.startsWith('REFCODE::')) return null;
+
+          const raw = window.name.replace('REFCODE::', '');
+          return JSON.parse(decodeURIComponent(raw));
+        } catch (e) {
+          return null;
+        }
+      }
+
+      function clearWindowName() {
+        try {
+          window.name = '';
+        } catch (e) {}
+      }
+
+      function parseDirectionFromCode(code) {
+        const match = String(code || '').match(/^([A-Z]{2})-/);
+        return match ? match[1] : 'EU';
+      }
+
+      function getWhatsAppText(direction, country, code) {
+        const c = normalizeValue(country);
+
+        if (direction === 'US') {
+          return "Hi! I'd like to get more details about my U.S. visa inquiry.\n\nReference Code: " + code;
+        }
+
+        if (direction === 'FR') {
+          return "Hi! I'd like to get more details about my immigration/residency inquiry for France.\n\nReference Code: " + code;
+        }
+
+        if (direction === 'ES' || c.includes('spain')) {
+          return "Hi! I'd like to get more details about my immigration/residency inquiry for Spain.\n\nReference Code: " + code;
+        }
+
+        if (direction === 'LU' || c.includes('luxembourg')) {
+          return "Hi! I'd like to get more details about my immigration/residency inquiry for Luxembourg.\n\nReference Code: " + code;
+        }
+
+        // Default for Europe
+        return "Hi! I'd like to get more details about my immigration/residency inquiry for Europe.\n\nReference Code: " + code;
+      }
+
+      function buildWhatsAppLink(direction, country, code) {
+        const base = 'https://wa.me/12896211855?text=';
+        const text = getWhatsAppText(direction, country, code);
+        return base + encodeURIComponent(text);
+      }
+
+      function setWhatsAppLink() {
+        const data = readWindowNamePayload();
+
+        if (!data || !data.code) {
+          console.log('Reference code not found in window.name');
+          return;
+        }
+
+        const direction = data.direction || parseDirectionFromCode(data.code);
+        const country = data.country || '';
+
+        // ВАЖНО: Убедитесь, что номер телефона в селекторе совпадает с тем, что на кнопке в Тильде
+        const btn = document.querySelector('a[href^="https://wa.me/12896211855"]');
+
+        if (!btn) {
+          console.log('WhatsApp button not found');
+          return;
+        }
+
+        btn.href = buildWhatsAppLink(direction, country, data.code);
+        console.log('WA button updated with code:', data.code, 'direction:', direction, 'country:', country || '(empty)');
+
+        clearWindowName();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setWhatsAppLink);
+      } else {
+        setWhatsAppLink();
+      }
+    })();
+    </script>
 </body>
 </html>
