@@ -195,19 +195,40 @@
       }
 
       function readWindowNamePayload() {
+        // Сначала пробуем window.name
         try {
-          if (!window.name || !window.name.startsWith('REFCODE::')) return null;
+          if (window.name && window.name.startsWith('REFCODE::')) {
+            const raw = window.name.replace('REFCODE::', '');
+            return JSON.parse(decodeURIComponent(raw));
+          }
+        } catch (e) {}
 
-          const raw = window.name.replace('REFCODE::', '');
-          return JSON.parse(decodeURIComponent(raw));
-        } catch (e) {
-          return null;
-        }
+        // Затем пробуем localStorage
+        try {
+          const stored = localStorage.getItem('ghl_submitted_code');
+          if (stored) {
+            return JSON.parse(stored);
+          }
+        } catch (e) {}
+
+        // Затем пробуем URL параметр
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const code = params.get('ref');
+          if (code) {
+            return { code: code, direction: 'EU', country: '' };
+          }
+        } catch (e) {}
+
+        return null;
       }
 
       function clearWindowName() {
         try {
           window.name = '';
+        } catch (e) {}
+        try {
+          localStorage.removeItem('ghl_submitted_code');
         } catch (e) {}
       }
 

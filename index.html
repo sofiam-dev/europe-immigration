@@ -124,6 +124,11 @@
 
           window.name = 'REFCODE::' + encodeURIComponent(JSON.stringify(payload));
 
+          // Также сохраняем в localStorage как запасной вариант
+          try {
+            localStorage.setItem('ghl_submitted_code', JSON.stringify(payload));
+          } catch (e) {}
+
           console.log('Submitted reference code packed for Thank You page:', data.code);
         }
       });
