@@ -87,7 +87,6 @@
       window.addEventListener('message', function (event) {
         const data = event.data || {};
 
-        // 1. Форма просит код — отдаем ей
         if (
           data.type === 'GHL_REFERENCE_CODE_REQUEST' &&
           data.direction === DIRECTION
@@ -106,7 +105,6 @@
           } catch (e) {}
         }
 
-        // 2. Форма сообщает, что клиент нажал Submit
         if (
           data.type === 'GHL_REFERENCE_CODE_SUBMITTED' &&
           data.direction === DIRECTION &&
@@ -114,22 +112,7 @@
         ) {
           setStorage(SUBMITTED_KEY, data.code);
           setStorage(ACTIVE_KEY, data.code);
-
-          // ВАЖНАЯ АДАПТАЦИЯ: Упаковываем данные в window.name для страницы Спасибо
-          const payload = {
-            code: data.code,
-            direction: DIRECTION,
-            country: '' // Оставляем пустым, так как форма на общую Европу
-          };
-
-          window.name = 'REFCODE::' + encodeURIComponent(JSON.stringify(payload));
-
-          // Также сохраняем в localStorage как запасной вариант
-          try {
-            localStorage.setItem('ghl_submitted_code', JSON.stringify(payload));
-          } catch (e) {}
-
-          console.log('Submitted reference code packed for Thank You page:', data.code);
+          console.log('Submitted reference code saved:', data.code);
         }
       });
 

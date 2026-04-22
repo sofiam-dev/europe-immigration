@@ -187,108 +187,56 @@
 
     <script>
     (function () {
-      function normalizeValue(value) {
-        return String(value || '')
-          .toLowerCase()
-          .replace(/\s+/g, ' ')
-          .trim();
-      }
+      const DIRECTION = 'EU';
+      const ACTIVE_KEY = 'ghl_active_reference_code_' + DIRECTION;
+      const SUBMITTED_KEY = 'ghl_submitted_reference_code_' + DIRECTION;
+      const PAGE_KEY = 'ghl_reference_page_' + DIRECTION;
 
-      function readWindowNamePayload() {
-        // Сначала пробуем window.name
+      function getStorage(key) {
         try {
-          if (window.name && window.name.startsWith('REFCODE::')) {
-            const raw = window.name.replace('REFCODE::', '');
-            return JSON.parse(decodeURIComponent(raw));
-          }
-        } catch (e) {}
-
-        // Затем пробуем localStorage
-        try {
-          const stored = localStorage.getItem('ghl_submitted_code');
-          if (stored) {
-            return JSON.parse(stored);
-          }
-        } catch (e) {}
-
-        // Затем пробуем URL параметр
-        try {
-          const params = new URLSearchParams(window.location.search);
-          const code = params.get('ref');
-          if (code) {
-            return { code: code, direction: 'EU', country: '' };
-          }
-        } catch (e) {}
-
-        return null;
-      }
-
-      function clearWindowName() {
-        try {
-          window.name = '';
-        } catch (e) {}
-        try {
-          localStorage.removeItem('ghl_submitted_code');
-        } catch (e) {}
-      }
-
-      function parseDirectionFromCode(code) {
-        const match = String(code || '').match(/^([A-Z]{2})-/);
-        return match ? match[1] : 'EU';
-      }
-
-      function getWhatsAppText(direction, country, code) {
-        const c = normalizeValue(country);
-
-        if (direction === 'US') {
-          return "Hi! I'd like to get more details about my U.S. visa inquiry.\n\nReference Code: " + code;
+          return sessionStorage.getItem(key) || '';
+        } catch (e) {
+          return '';
         }
-
-        if (direction === 'FR') {
-          return "Hi! I'd like to get more details about my immigration/residency inquiry for France.\n\nReference Code: " + code;
-        }
-
-        if (direction === 'ES' || c.includes('spain')) {
-          return "Hi! I'd like to get more details about my immigration/residency inquiry for Spain.\n\nReference Code: " + code;
-        }
-
-        if (direction === 'LU' || c.includes('luxembourg')) {
-          return "Hi! I'd like to get more details about my immigration/residency inquiry for Luxembourg.\n\nReference Code: " + code;
-        }
-
-        // Default for Europe
-        return "Hi! I'd like to get more details about my immigration/residency inquiry for Europe.\n\nReference Code: " + code;
       }
 
-      function buildWhatsAppLink(direction, country, code) {
+      function removeStorage(key) {
+        try {
+          sessionStorage.removeItem(key);
+        } catch (e) {}
+      }
+
+      function getCode() {
+        return getStorage(SUBMITTED_KEY) || getStorage(ACTIVE_KEY) || '';
+      }
+
+      function buildWhatsAppLink(code) {
         const base = 'https://wa.me/12896211855?text=';
-        const text = getWhatsAppText(direction, country, code);
+        const text =
+          "Hi! I'd like to get more details about my immigration/residency inquiry for Europe.\n\nReference Code: " +
+          code;
         return base + encodeURIComponent(text);
       }
 
       function setWhatsAppLink() {
-        const data = readWindowNamePayload();
-
-        if (!data || !data.code) {
-          console.log('Reference code not found in window.name');
+        const code = getCode();
+        if (!code) {
+          console.log('Reference code not found');
           return;
         }
 
-        const direction = data.direction || parseDirectionFromCode(data.code);
-        const country = data.country || '';
-
-        // ВАЖНО: Убедитесь, что номер телефона в селекторе совпадает с тем, что на кнопке
-        const btn = document.querySelector('.whatsapp-btn');
-
+        const btn = document.querySelector('a[href^="https://wa.me/12896211855"]');
         if (!btn) {
           console.log('WhatsApp button not found');
           return;
         }
 
-        btn.href = buildWhatsAppLink(direction, country, data.code);
-        console.log('WA button updated with code:', data.code, 'direction:', direction, 'country:', country || '(empty)');
+        btn.href = buildWhatsAppLink(code);
+        console.log('WA button updated with code:', code);
 
-        clearWindowName();
+        removeStorage(ACTIVE_KEY);
+        removeStorage(SUBMITTED_KEY);
+        removeStorage(PAGE_KEY);
       }
 
       if (document.readyState === 'loading') {
